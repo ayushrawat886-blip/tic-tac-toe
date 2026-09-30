@@ -16,7 +16,6 @@ function getWinner(b) {
   return null;
 }
 
-// Computer ('O'): pehle khud jeete, fir X ko roke, fir center, fir random
 function cpuPick(b) {
   const free = b.map((v, i) => (v ? null : i)).filter((i) => i !== null);
   const tryWin = (p) =>
@@ -59,12 +58,10 @@ export default function TicTacToe() {
     setXTurn(!xTurn);
   }
 
-  // Computer ki baari
   useEffect(() => {
     if (!cpuThinking) return;
     const t = setTimeout(() => move(cpuPick(board)), 400);
     return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cpuThinking, board]);
 
   function newRound() {
